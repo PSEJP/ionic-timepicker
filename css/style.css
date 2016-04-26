@@ -13,7 +13,15 @@
     text-align: center;
 }
 
-.button-circle {
+.col-relative {
+    position: relative;
+}
+
+.toggle.pull-right {
+    margin-left: auto;
+    margin-right: 8px;
+}
+.item-date-picker .button-circle {
     border-radius: 30px !important;
     border: 1px solid;
     width: 60px;
@@ -21,11 +29,11 @@
     margin: 6px 0 !important;
 }
 
-.button-date-picked {
+.item-date-picker .button-date-picked {
     position: relative;
 }
 
-.button-date-picked .date-picked {
+.item-date-picker .button-date-picked .date-picked {
     position: absolute;
     left: 0;
     right: 0;
@@ -33,7 +41,7 @@
     bottom: 0;
 }
 
-.button-date-picked .date-picked::before {
+.item-date-picker .button-date-picked .date-picked::before {
     content: attr(data-date);
     position: absolute;
     top: 0px;
@@ -44,10 +52,17 @@
     vertical-align: bottom;
 }
 
-.button-date-picked .date-picked::after {
+.item-date-picker .button-date-picked .date-picked::after {
     content: attr(data-time);
     position: absolute;
     bottom: -5px;
     left: 0;
     right: 0
+}
+
+.item-date-picker .button-close {
+    position: absolute !important;
+    display: block;
+    right: -5px;
+    top: -5px;
 }

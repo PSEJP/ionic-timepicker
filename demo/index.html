@@ -21,20 +21,18 @@
 
 <ion-content>
     <div class="list">
-
-        <div class="item item-divider">
-            自動クリア時間
-        </div>
-        <div class="item item-block">
+        <div class="item item-divider item-toggle">自動クリア時間</div>
+        <div class="item item-block item-date-picker">
             <div class="row row-wrap">
-                <div class="col col-center col-25" ng-repeat="item in date">
-                    <button ng-if="item" class="button button-calm button-circle button-date-picked" ng-click="openTimepicker()">
+                <div class="col col-center col-relative col-25" ng-repeat="item in date">
+                    <button ng-if="item" class="button button-calm button-circle button-date-picked" ng-click="openTimepicker($index)">
                         <span class="date-picked" data-date="{{item.date}}" data-time="{{item.time}}"></span>
                     </button>
+                    <button class="button button-close button-small button-clear icon ion-close-round" ng-click="removeTimePicked($index)"></button>
                 </div>
                 <div class="col col-center col-25">
-                    <button class="button button-calm icon ion-plus-round button-circle"
-                            ng-click="openTimepicker()">
+                    <button class="button button-calm icon ion-plus-round button-circle" name="create"
+                            ng-click="openTimepicker($index, $event.target.name)">
                     </button>
                 </div>
             </div>
@@ -57,16 +55,33 @@
                     {date: '土', time: '12:20'},
                     {date: '全', time: '24:00'}
                 ];
+                $scope.removeTimePicked = function(index) {
+                    $scope.date.pop(index);
+                };
+                $scope.openTimepicker = function (index, name) {
 
-                $scope.openTimepicker = function () {
                     var ipObj1 = {
                         callback: function (val, date) { //Mandatory
-                            console.log(date);
+
+                            // create new Auto clear Time
+                            if( name === 'create') {
+                                var selectedTime = new Date(val * 1000);
+                                $scope.date.push({
+                                    date: date,
+                                    time: selectedTime.getUTCHours() + ':' + selectedTime.getUTCMinutes()
+                                });
+                                return
+                            }
+
                             if (typeof(val) === 'undefined'|| typeof(date) === 'undefined') {
 
                             } else {
+                                // edit auto clear time
                                 var selectedTime = new Date(val * 1000);
-                                $scope.date[0].date= date;
+                                $scope.date[index]={
+                                    date: date,
+                                    time: selectedTime.getUTCHours() + ':' + selectedTime.getUTCMinutes()
+                                };
                                 console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
                             }
                         },
@@ -78,6 +93,7 @@
                     };
 
                     ionicTimePicker.openTimePicker(ipObj1);
+
                 };
 
             })
