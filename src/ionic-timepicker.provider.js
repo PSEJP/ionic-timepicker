@@ -128,6 +128,14 @@ angular.module('ionic-timepicker.provider', [])
           onTap: function (e) {
             var totalSec = 0;
 
+            // Johnson Alert Date is Empty
+            if (typeof($scope.date.date) === 'undefined') {
+              var alertPopup = $ionicPopup.alert({
+                template: '曜日を選択してください。'
+              });
+              return;
+            }
+
             if ($scope.time.format == 12) {
               $scope.time.hours = Number($scope.time.hours);
               if ($scope.time.meridian == 'PM' && $scope.time.hours != 12) {
