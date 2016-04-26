@@ -1,0 +1,53 @@
+
+.item-block {
+    padding: 3px !important;
+}
+
+.row-wrap {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.col-center {
+    text-align: center;
+}
+
+.button-circle {
+    border-radius: 30px !important;
+    border: 1px solid;
+    width: 60px;
+    height: 60px;
+    margin: 6px 0 !important;
+}
+
+.button-date-picked {
+    position: relative;
+}
+
+.button-date-picked .date-picked {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.button-date-picked .date-picked::before {
+    content: attr(data-date);
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    font-size: 1.5em;
+    line-height: 1.5em;
+    vertical-align: bottom;
+}
+
+.button-date-picked .date-picked::after {
+    content: attr(data-time);
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0
+}

@@ -31,7 +31,6 @@ angular.module('ionic-timepicker.provider', [])
         return currentDate;
       }
 
-
       //Increasing the hours
       $scope.increaseHours = function () {
         $scope.time.hours = Number($scope.time.hours);

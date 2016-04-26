@@ -25,6 +25,7 @@ For example, you might change some of the default colors:
   padding: 0;
   min-height: 44px;
   height: 44px;
+  border-top: 1px solid silver;
 }
 .ionic_timepicker_popup .row-wrap{
   flex-wrap: wrap;
@@ -37,12 +38,23 @@ For example, you might change some of the default colors:
 }
 .ionic_timepicker_popup .heading {
   height: 44px;
-  background-color: #009688;
+  background-color: #387ef5;
   color: #ffffff;
   text-align: center;
   line-height: 44px;
   font-size: 18px;
   font-weight: bold;
+}
+.ionic_timepicker_popup .date_picker .item-radio{
+  margin-bottom: 3px;
+  margin-right: 3px;
+}
+.ionic_timepicker_popup .date_picker .item-radio .item-content{
+  padding: 8px;
+  text-align: center;
+}
+.ionic_timepicker_popup .date_picker .item-radio .radio-icon{
+  padding: 10px;
 }
 .ionic_timepicker_popup .time_picker_colon {
   padding-top: 45px;
@@ -62,7 +74,10 @@ For example, you might change some of the default colors:
 .ionic_timepicker_popup .overflowShow {
   white-space: normal !important;
 }
-.ionic_timepicker_popup .button_set, .ionic_timepicker_popup .button_close {
-  background-color: #009688;
+.ionic_timepicker_popup .button_set {
+  background-color: #33cd5f;
   color: #ffffff;
+}
+.ionic_timepicker_popup .button_close {
+  background-color: #FFF;
 }
