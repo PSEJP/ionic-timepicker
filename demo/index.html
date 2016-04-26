@@ -56,7 +56,7 @@
                     {date: '全', time: '24:00'}
                 ];
                 $scope.removeTimePicked = function(index) {
-                    $scope.date.pop(index);
+                    $scope.date.splice(index, 1);
                 };
                 $scope.openTimepicker = function (index, name) {
 
