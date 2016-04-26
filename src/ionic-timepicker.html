@@ -1,42 +1,61 @@
 <div class="">
-  <div class="heading">{{time.hours}} : {{time.minutes}} <span ng-show="time.format == 12">{{time.meridian}}</span></div>
-  <div class="row row-wrap">
-    <div class="col-20">日</div>
-    <div class="col-20">月</div>
-    <div class="col-20">水</div>
-    <div class="col-20">火</div>
-    <div class="col-20">木</div>
-    <div class="col-20">金</div>
-    <div class="col-20">土</div>
-    <div class="col-20">全</div>
-  </div>
-  <div class="row" ng-class="{'padding_left_15px':time.format == 12}">
-    <div class="col col-25" ng-class="{'col-offset-20 col-25':time.format == 24}">
-      <button type="button" class="button button-clear button-small button-dark time_picker_arrows"
-              ng-click="increaseHours()">
-        <i class="icon ion-chevron-up"></i></button>
-      <div ng-bind="time.hours" class="time_picker_box_text"></div>
-      <button type="button" class="button button-clear button-small button-dark time_picker_arrows"
-              ng-click="decreaseHours()">
-        <i class="icon ion-chevron-down"></i></button>
+    <div class="heading">{{date.date}}曜日</div>
+    <div class="row row-wrap date_picker">
+        <div class= "col-20">
+            <ion-radio ng-model="choice" ng-value="'SUN'" ng-change='pickDate(choice)'>日</ion-radio>
+        </div>
+        <div class="col-20">
+            <ion-radio ng-model="choice" ng-value="'MON'" ng-change='pickDate(choice)'>月</ion-radio>
+        </div>
+        <div class="col-20">
+            <ion-radio ng-model="choice" ng-value="'TUE'" ng-change='pickDate(choice)'>火</ion-radio>
+        </div>
+        <div class="col-20">
+            <ion-radio ng-model="choice" ng-value="'WEN'" ng-change='pickDate(choice)'>水</ion-radio>
+        </div>
+        <div class="col-20">
+            <ion-radio ng-model="choice" ng-value="'THU'" ng-change='pickDate(choice)'>木</ion-radio>
+        </div>
+        <div class="col-20">
+            <ion-radio ng-model="choice" ng-value="'FRI'" ng-change='pickDate(choice)'>金</ion-radio>
+        </div>
+        <div class="col-20">
+            <ion-radio ng-model="choice" ng-value="'SAT'" ng-change='pickDate(choice)'>土</ion-radio>
+        </div>
+        <div class="col-20 col-offset-20"></div>
+        <div class="col-20">
+            <ion-radio ng-model="choice" ng-value="'ALL'" ng-change='pickDate(choice)'>全</ion-radio>
+        </div>
     </div>
-    <label class="col col-10 time_picker_colon"> : </label>
+    <div class="heading">{{time.hours}} : {{time.minutes}} <span ng-show="time.format == 12">{{time.meridian}}</span>
+    </div>
+    <div class="row" ng-class="{'padding_left_15px':time.format == 12}">
+        <div class="col col-25" ng-class="{'col-offset-20 col-25':time.format == 24}">
+            <button type="button" class="button button-clear button-small button-dark time_picker_arrows"
+                    ng-click="increaseHours()">
+                <i class="icon ion-chevron-up"></i></button>
+            <div ng-bind="time.hours" class="time_picker_box_text"></div>
+            <button type="button" class="button button-clear button-small button-dark time_picker_arrows"
+                    ng-click="decreaseHours()">
+                <i class="icon ion-chevron-down"></i></button>
+        </div>
+        <label class="col col-10 time_picker_colon"> : </label>
 
-    <div class="col col-25" ng-class="{'col-25':time.format == 24}">
-      <button type="button" class="button button-clear button-small button-dark time_picker_arrows"
-              ng-click="increaseMinutes()"><i class="icon ion-chevron-up"></i></button>
-      <div ng-bind="time.minutes" class="time_picker_box_text"></div>
-      <button type="button" class="button button-clear button-small button-dark time_picker_arrows"
-              ng-click="decreaseMinutes()"><i class="icon ion-chevron-down"></i></button>
-    </div>
-    <label class="col col-10 time_picker_colon" ng-if="time.format == 12"> : </label>
+        <div class="col col-25" ng-class="{'col-25':time.format == 24}">
+            <button type="button" class="button button-clear button-small button-dark time_picker_arrows"
+                    ng-click="increaseMinutes()"><i class="icon ion-chevron-up"></i></button>
+            <div ng-bind="time.minutes" class="time_picker_box_text"></div>
+            <button type="button" class="button button-clear button-small button-dark time_picker_arrows"
+                    ng-click="decreaseMinutes()"><i class="icon ion-chevron-down"></i></button>
+        </div>
+        <label class="col col-10 time_picker_colon" ng-if="time.format == 12"> : </label>
 
-    <div class="col col-25" ng-if="time.format == 12">
-      <button type="button" class="button button-clear button-small button-dark time_picker_arrows"
-              ng-click="changeMeridian()"><i class="icon ion-chevron-up"></i></button>
-      <div ng-bind="time.meridian" class="time_picker_box_text"></div>
-      <button type="button" class="button button-clear button-small button-dark time_picker_arrows"
-              ng-click="changeMeridian()"><i class="icon ion-chevron-down"></i></button>
+        <div class="col col-25" ng-if="time.format == 12">
+            <button type="button" class="button button-clear button-small button-dark time_picker_arrows"
+                    ng-click="changeMeridian()"><i class="icon ion-chevron-up"></i></button>
+            <div ng-bind="time.meridian" class="time_picker_box_text"></div>
+            <button type="button" class="button button-clear button-small button-dark time_picker_arrows"
+                    ng-click="changeMeridian()"><i class="icon ion-chevron-down"></i></button>
+        </div>
     </div>
-  </div>
 </div>
