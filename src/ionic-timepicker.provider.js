@@ -82,6 +82,14 @@ angular.module('ionic-timepicker.provider', [])
         $scope.time.meridian = ($scope.time.meridian === "AM") ? "PM" : "AM";
       };
 
+      // Johnson : Pick the date
+      $scope.pickDate = function(date) {
+          var jpWeek = ['日', '月', '火', '水', '木', '金', '土', '全'];
+          var enWeek = ['SUN', 'MON', 'TUE', 'WEN', 'THU', 'FRI', 'SAT', 'ALL'];
+          var jpDate = jpWeek[enWeek.indexOf(date)];
+          $scope.date.date = jpDate;
+      };
+
       function setMinSecs(ipTime, format) {
         $scope.time.hours = ipTime / (60 * 60);
 
