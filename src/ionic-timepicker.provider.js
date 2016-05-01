@@ -83,11 +83,9 @@ angular.module('ionic-timepicker.provider', [])
       };
 
       // Johnson : Pick the date
-      $scope.pickDate = function(date) {
-          var jpWeek = ['日', '月', '火', '水', '木', '金', '土', '全'];
-          var enWeek = ['SUN', 'MON', 'TUE', 'WEN', 'THU', 'FRI', 'SAT', 'ALL'];
-          var jpDate = jpWeek[enWeek.indexOf(date)];
-          $scope.date.date = jpDate;
+      $scope.pickDate = function(index) {
+          var options = {7:'日', 1:'月', 2:'火', 3:'水', 4:'木', 5:'金', 6:'土'};
+          $scope.date.dow = index;
       };
 
       function setMinSecs(ipTime, format) {
@@ -128,11 +126,12 @@ angular.module('ionic-timepicker.provider', [])
             var totalSec = 0;
 
             // Johnson Alert Date is Empty
-            if (typeof($scope.date.date) === 'undefined') {
+            if (typeof($scope.date.dow) === 'undefined') {
               var alertPopup = $ionicPopup.alert({
                 template: '曜日を選択してください。'
               });
-              return;
+              e.preventDefault();
+              return false;
             }
 
             if ($scope.time.format == 12) {
@@ -146,7 +145,7 @@ angular.module('ionic-timepicker.provider', [])
             } else {
               totalSec = ($scope.time.hours * 60 * 60) + ($scope.time.minutes * 60);
             }
-            $scope.mainObj.callback(totalSec, $scope.date.date);
+            $scope.mainObj.callback(totalSec, $scope.date.dow);
           }
         });
 

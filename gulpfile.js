@@ -31,6 +31,10 @@ gulp.task('make-bundle', ['del', 'html2js', 'css2js'], function () {
     .pipe(gulp.dest('dist/'));
 });
 
+gulp.task('watch', function () {
+  return gulp.watch('src/*', ['make-bundle']);
+});
+
 gulp.task('del-temp-files', ['make-bundle'], function () {
   del(['dist/templates.js', 'dist/ionic-timepicker.styles.js']);
 });

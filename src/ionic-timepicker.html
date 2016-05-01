@@ -1,31 +1,28 @@
 <div class="">
     <div class="heading">{{date.date}}曜日</div>
-    <div class="row row-wrap date_picker">
-        <div class= "col-20">
-            <ion-radio ng-model="choice" ng-value="'SUN'" ng-change='pickDate(choice)'>日</ion-radio>
+    <div class="row row-wrap date_picker pull-left">
+        <div class="col col-20">
+            <ion-radio ng-model="choice" ng-value="7" ng-change='pickDate(choice)'>日</ion-radio>
         </div>
-        <div class="col-20">
-            <ion-radio ng-model="choice" ng-value="'MON'" ng-change='pickDate(choice)'>月</ion-radio>
+        <div class="col col-20">
+            <ion-radio ng-model="choice" ng-value="1" ng-change='pickDate(choice)'>月</ion-radio>
         </div>
-        <div class="col-20">
-            <ion-radio ng-model="choice" ng-value="'TUE'" ng-change='pickDate(choice)'>火</ion-radio>
+        <div class="col col-20">
+            <ion-radio ng-model="choice" ng-value="2" ng-change='pickDate(choice)'>火</ion-radio>
         </div>
-        <div class="col-20">
-            <ion-radio ng-model="choice" ng-value="'WEN'" ng-change='pickDate(choice)'>水</ion-radio>
+        <div class="col col-20">
+            <ion-radio ng-model="choice" ng-value="3" ng-change='pickDate(choice)'>水</ion-radio>
         </div>
-        <div class="col-20">
-            <ion-radio ng-model="choice" ng-value="'THU'" ng-change='pickDate(choice)'>木</ion-radio>
+        <div class="col col-20">
+            <ion-radio ng-model="choice" ng-value="4" ng-change='pickDate(choice)'>木</ion-radio>
         </div>
-        <div class="col-20">
-            <ion-radio ng-model="choice" ng-value="'FRI'" ng-change='pickDate(choice)'>金</ion-radio>
+        <div class="col col-20">
+            <ion-radio ng-model="choice" ng-value="5" ng-change='pickDate(choice)'>金</ion-radio>
         </div>
-        <div class="col-20">
-            <ion-radio ng-model="choice" ng-value="'SAT'" ng-change='pickDate(choice)'>土</ion-radio>
+        <div class="col col-20">
+            <ion-radio ng-model="choice" ng-value="6" ng-change='pickDate(choice)'>土</ion-radio>
         </div>
-        <div class="col-20 col-offset-20"></div>
-        <div class="col-20">
-            <ion-radio ng-model="choice" ng-value="'ALL'" ng-change='pickDate(choice)'>全</ion-radio>
-        </div>
+        <div class="col col-60"></div>
     </div>
     <div class="heading">{{time.hours}} : {{time.minutes}} <span ng-show="time.format == 12">{{time.meridian}}</span>
     </div>

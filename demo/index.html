@@ -8,7 +8,8 @@
 
     <link href="https://code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
-    <script src="https://code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
+    <script src="https://code.ionicframework.com/nightly/js/ionic.bundle.js"></script>'
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment-with-locales.min.js"></script>
     <script src="../dist/ionic-timepicker.bundle.min.js"></script>
 
 </head>
@@ -46,40 +47,33 @@
 
             .controller('MyCtrl', function ($scope, $timeout, ionicTimePicker) {
                 $scope.date = [
-                    {date: '日', time: '1:50'},
-                    {date: '月', time: '5:20'},
-                    {date: '火', time: '16:10'},
-                    {date: '水', time: '3:20'},
-                    {date: '木', time: '11:40'},
-                    {date: '金', time: '13:10'},
-                    {date: '土', time: '12:20'},
-                    {date: '全', time: '24:00'}
+                    {date: 7, time: 6600} // 01:50
                 ];
+
                 $scope.removeTimePicked = function(index) {
                     $scope.date.splice(index, 1);
                 };
+
                 $scope.openTimepicker = function (index, name) {
 
                     var ipObj1 = {
-                        callback: function (val, date) { //Mandatory
+                        callback: function (val, dow) { //Mandatory
 
                             // create new Auto clear Time
                             if( name === 'create') {
                                 var selectedTime = new Date(val * 1000);
                                 $scope.date.push({
-                                    date: date,
+                                    date: dow,
                                     time: selectedTime.getUTCHours() + ':' + selectedTime.getUTCMinutes()
                                 });
-                                return
+                                return;
                             }
 
-                            if (typeof(val) === 'undefined'|| typeof(date) === 'undefined') {
-
-                            } else {
+                            if (typeof(val) !== 'undefined' && typeof(dow) !== 'undefined') {
                                 // edit auto clear time
                                 var selectedTime = new Date(val * 1000);
                                 $scope.date[index]={
-                                    date: date,
+                                    date: dow,
                                     time: selectedTime.getUTCHours() + ':' + selectedTime.getUTCMinutes()
                                 };
                                 console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
