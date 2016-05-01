@@ -82,12 +82,6 @@ angular.module('ionic-timepicker.provider', [])
         $scope.time.meridian = ($scope.time.meridian === "AM") ? "PM" : "AM";
       };
 
-      // Johnson : Pick the date
-      $scope.pickDate = function(index) {
-          var options = {7:'日', 1:'月', 2:'火', 3:'水', 4:'木', 5:'金', 6:'土'};
-          $scope.date.dow = index;
-      };
-
       function setMinSecs(ipTime, format) {
         $scope.time.hours = ipTime / (60 * 60);
 
@@ -118,6 +112,12 @@ angular.module('ionic-timepicker.provider', [])
         var buttons = [];
         $scope.mainObj = angular.extend({}, config, ipObj);
         setMinSecs($scope.mainObj.inputTime, $scope.mainObj.format);
+
+        if (!angular.isUndefined($scope.mainObj.dow)) {
+          $scope.date.dow = $scope.mainObj.dow;
+        } else {
+          delete $scope.date.dow;
+        }
 
         buttons.push({
           text: $scope.mainObj.setLabel,
